@@ -19,7 +19,14 @@
     	.head-text
     	{
     		font-family: 'Warnes', cursive;
-    		text-shadow: 1px 1px 1px red;
+    		animation: bgChange 2s alternate infinite;
+    	}
+
+		.foot-text
+    	{
+    		margin-bottom: 0px;
+    		padding: 10px;
+    		color:white;
     		animation: bgChange 2s alternate infinite;
     	}
 
@@ -40,16 +47,16 @@
     	{
     		background: white;
     		padding: 10px 20px;
-    		font-size: 29px;
+    		font-size: 28px;
     		border-radius: 5px;
-    		margin: 35px 20px;
+    		margin: 29px 20px;
     		animation: colorChange 2s alternate infinite;
 		}
 
 	@keyframes colorChange
 	{
-	  from{box-shadow: -1px 1px 7px red;background: #f9f9f9;}
-	  to{box-shadow: 1px -1px 7px blue; background: white;}
+	  from{box-shadow: -1px 1px 5px red;background: #f9f9f9;}
+	  to{box-shadow: 1px 1px 5px blue; background: white;}
 	}
 	
 	@media screen and (max-width: 500px) {
@@ -63,8 +70,9 @@
   </head>
   <body style="margin: 0px auto;" class="bg-light">
 	<div style="height:100vh; width:100%;" onclick="myFunction2()" class="align-middle text-center">
-		<h2 class="align-middle py-3 text-white head-text">Click Anywhere to Start piano !!</h2>
-
+		<h2 id="btn1" class="align-middle py-3 text-white head-text">Click Anywhere to Start piano !!</h2>
+		<p class="container">Either Press These keys from Your Keyboard or Click these Buttons below to play your Piano:</p>
+		<hr>
 
 		<div class="container-fluid text-center">
 			<div class="row align-items-center">
@@ -108,7 +116,7 @@
 					To Stop Music
 				</div>
 				<div class="col-md-9">
-					<div class="row">
+					<div class="row btn-row">
 						<div class="btns" onclick="test(16,this)">
 							Shift Key
 						</div>
@@ -123,7 +131,7 @@
 					Drum
 				</div>
 				<div class="col-md-9">
-					<div class="row">
+					<div class="row btn-row">
 						<div class="btns" onclick="test(17,this)">
 							Control Bar
 						</div>
@@ -138,7 +146,7 @@
 					Piano Notes
 				</div>
 				<div class="col-md-9">
-					<div class="row">
+					<div class="row btn-row">
 						<div class="btns" onclick="test(65,this)">
 							A
 						</div>
@@ -175,6 +183,7 @@
 			<source src="" type="audio/wav">
 		</audio>
 
+	<p class="text-center foot-text">Made By Ak-Bhatia</p>
 	</div>
 
 	<script>
