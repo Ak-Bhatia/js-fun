@@ -16,6 +16,19 @@
 
     <style type="text/css">
     	
+    	.head-text
+    	{
+    		font-family: 'Warnes', cursive;
+    		text-shadow: 1px 1px 1px red;
+    		animation: bgChange 2s alternate infinite;
+    	}
+
+    	@keyframes bgChange{
+    		from{background: #35428A;}
+    		to{background: #171D3E;}	
+    	}
+
+
     	.btns-text
     	{
     		font-weight: 550;
@@ -50,7 +63,7 @@
   </head>
   <body style="margin: 0px auto;" class="bg-light">
 	<div style="height:100vh; width:100%;" onclick="myFunction2()" class="align-middle text-center">
-		<h2 class="align-middle bg-dark py-3 text-white" style="font-family: 'Warnes', cursive; text-shadow: 1px 1px 1px red;">Click Anywhere to Start piano !!</h2>
+		<h2 class="align-middle py-3 text-white head-text">Click Anywhere to Start piano !!</h2>
 
 
 		<div class="container-fluid text-center">
@@ -95,7 +108,7 @@
 					To Stop Music
 				</div>
 				<div class="col-md-9">
-					<div class="row btn-row">
+					<div class="row">
 						<div class="btns" onclick="test(16,this)">
 							Shift Key
 						</div>
@@ -110,7 +123,7 @@
 					Drum
 				</div>
 				<div class="col-md-9">
-					<div class="row btn-row">
+					<div class="row">
 						<div class="btns" onclick="test(17,this)">
 							Control Bar
 						</div>
@@ -125,7 +138,7 @@
 					Piano Notes
 				</div>
 				<div class="col-md-9">
-					<div class="row btn-row">
+					<div class="row">
 						<div class="btns" onclick="test(65,this)">
 							A
 						</div>
