@@ -38,13 +38,19 @@
 	  from{box-shadow: -1px 1px 7px red;background: #f9f9f9;}
 	  to{box-shadow: 1px -1px 7px blue; background: white;}
 	}
+	
+	@media screen and (max-width: 500px) {
+	  .btn-row {
+	  	margin-left: 5vw;
+	  }
+	}
 
     </style>
 
   </head>
-  <body style="margin: 0px auto;">
-	<div style="height:100vh; width:100%;" onclick="myFunction2()" class="align-middle bg-light text-center">
-		<h1 id="btn1" class="align-middle bg-dark py-3 text-white" style="font-family: 'Warnes', cursive; text-shadow: 1px 1px 1px red;">Click Anywhere to Start</h1>
+  <body style="margin: 0px auto;" class="bg-light">
+	<div style="height:100vh; width:100%;" onclick="myFunction2()" class="align-middle text-center">
+		<h2 class="align-middle bg-dark py-3 text-white" style="font-family: 'Warnes', cursive; text-shadow: 1px 1px 1px red;">Click Anywhere to Start piano !!</h2>
 
 
 		<div class="container-fluid text-center">
@@ -53,32 +59,32 @@
 					Inbuilt Tunes
 				</div>
 				<div class="col-md-9">
-					<div class="row">
-						<div class="btns" id="1">
+					<div class="row btn-row">
+						<div class="btns" onclick="test(49,this)">
 							1
 						</div>
-						<div class="btns" id="2">
+						<div class="btns" onclick="test(50,this)">
 							2
 						</div>
-						<div class="btns" id="3">
+						<div class="btns" onclick="test(51,this)">
 							3
 						</div>
-						<div class="btns" id="4">
+						<div class="btns" onclick="test(52,this)">
 							4
 						</div>
-						<div class="btns" id="5">
+						<div class="btns" onclick="test(53,this)">
 							5
 						</div>
-						<div class="btns" id="6">
+						<div class="btns" onclick="test(54,this)">
 							6
 						</div>
-						<div class="btns" id="7">
+						<div class="btns" onclick="test(55,this)">
 							7
 						</div>
-						<div class="btns" id="8">
+						<div class="btns" onclick="test(56,this)">
 							8
 						</div>
-						<div class="btns" id="9">
+						<div class="btns" onclick="test(57,this)">
 							9
 						</div>
 					</div>
@@ -90,10 +96,10 @@
 				</div>
 				<div class="col-md-9">
 					<div class="row">
-						<div class="btns" id="Shift">
+						<div class="btns" onclick="test(16,this)">
 							Shift Key
 						</div>
-						<div class="btns" id="0">
+						<div class="btns" onclick="test(48,this)">
 							0
 						</div>
 					</div>
@@ -105,10 +111,10 @@
 				</div>
 				<div class="col-md-9">
 					<div class="row">
-						<div class="btns" id="Control">
+						<div class="btns" onclick="test(17,this)">
 							Control Bar
 						</div>
-						<div class="btns" id="Space">
+						<div class="btns" onclick="test(32,this)">
 							Space Bar
 						</div>
 					</div>
@@ -120,28 +126,28 @@
 				</div>
 				<div class="col-md-9">
 					<div class="row">
-						<div class="btns" id="A">
+						<div class="btns" onclick="test(65,this)">
 							A
 						</div>
-						<div class="btns" id="S">
+						<div class="btns" onclick="test(83,this)">
 							S
 						</div>
-						<div class="btns" id="D">
+						<div class="btns" onclick="test(68,this)">
 							D
 						</div>
-						<div class="btns" id="F">
+						<div class="btns" onclick="test(70,this)">
 							F
 						</div>
-						<div class="btns" id="G">
+						<div class="btns" onclick="test(71,this)">
 							G
 						</div>
-						<div class="btns" id="H">
+						<div class="btns" onclick="test(72,this)">
 							H
 						</div>
-						<div class="btns" id="J">
+						<div class="btns" onclick="test(74,this)">
 							J
 						</div>
-						<div class="btns" id="K">
+						<div class="btns" onclick="test(75,this)">
 							K
 						</div>
 					</div>
@@ -149,22 +155,39 @@
 			</div>
 		</div>
 
-
-
-	<audio id="music">
-		<source src="" type="audio/wav">
-	</audio>
-	<audio id="music2">
-		<source src="" type="audio/wav">
-	</audio>
+		<audio id="music">
+			<source src="" type="audio/wav">
+		</audio>
+		<audio id="music2">
+			<source src="" type="audio/wav">
+		</audio>
 
 	</div>
+
+	<script>
+		var test = function(keycode,object){  
+		var myMusic= document.getElementById("music");
+	  	var myMusic2 = document.getElementById("music2");
+		if (keycode>=49 && keycode<=57) {
+			myMusic2.setAttribute("src","./music-files/"+keycode+".wav");
+			myMusic2.play();
+		} else if(keycode==16 || keycode == 48){
+			myMusic.pause();
+			myMusic2.pause();
+		}
+		else {
+		    myMusic.setAttribute("src","./music-files/"+keycode+".wav");
+			myMusic.play();
+		}
+	  }
+	</script>
+
 	<script>
 	function myFunction2() {
 	  var x = document.getElementById("btn1");
 	  var myMusic= document.getElementById("music");
 	  var myMusic2 = document.getElementById("music2");
-	  x.innerHTML = "Enjoy Playing!!";
+	  x.innerHTML = "Enjoy playing piano !!";
 	  document.onkeydown = checkKeycode
 	  function checkKeycode(e) {
 		var keycode;
