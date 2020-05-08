@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Merienda+One&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Warnes|Yeseva+One&display=swap" rel="stylesheet">
+
+    <title>Education App</title>
+
+    <style type="text/css">
+    	
+    	.btns-text
+    	{
+    		font-weight: 550;
+    		color: #000;
+    		font-size: 20px;
+    	}
+
+    	.btns
+    	{
+    		background: white;
+    		padding: 10px 20px;
+    		font-size: 29px;
+    		border-radius: 5px;
+    		margin: 35px 20px;
+    		animation: colorChange 2s alternate infinite;
+		}
+
+	@keyframes colorChange
+	{
+	  from{box-shadow: -1px 1px 7px red;background: #f9f9f9;}
+	  to{box-shadow: 1px -1px 7px blue; background: white;}
+	}
+
+    </style>
+
+  </head>
+  <body style="margin: 0px auto;">
+	<div style="height:100vh; width:100%;" onclick="myFunction2()" class="align-middle bg-light text-center">
+		<h1 id="btn1" class="align-middle bg-dark py-3 text-white" style="font-family: 'Warnes', cursive; text-shadow: 1px 1px 1px red;">Click Anywhere to Start</h1>
+
+
+		<div class="container-fluid text-center">
+			<div class="row align-items-center">
+				<div class="col-md-3 btns-text">
+					Inbuilt Tunes
+				</div>
+				<div class="col-md-9">
+					<div class="row">
+						<div class="btns" id="1">
+							1
+						</div>
+						<div class="btns" id="2">
+							2
+						</div>
+						<div class="btns" id="3">
+							3
+						</div>
+						<div class="btns" id="4">
+							4
+						</div>
+						<div class="btns" id="5">
+							5
+						</div>
+						<div class="btns" id="6">
+							6
+						</div>
+						<div class="btns" id="7">
+							7
+						</div>
+						<div class="btns" id="8">
+							8
+						</div>
+						<div class="btns" id="9">
+							9
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row align-items-center">
+				<div class="col-md-3 btns-text">
+					To Stop Music
+				</div>
+				<div class="col-md-9">
+					<div class="row">
+						<div class="btns" id="Shift">
+							Shift Key
+						</div>
+						<div class="btns" id="0">
+							0
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row align-items-center">
+				<div class="col-md-3 btns-text">
+					Drum
+				</div>
+				<div class="col-md-9">
+					<div class="row">
+						<div class="btns" id="Control">
+							Control Bar
+						</div>
+						<div class="btns" id="Space">
+							Space Bar
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row align-items-center">
+				<div class="col-md-3 btns-text">
+					Piano Notes
+				</div>
+				<div class="col-md-9">
+					<div class="row">
+						<div class="btns" id="A">
+							A
+						</div>
+						<div class="btns" id="S">
+							S
+						</div>
+						<div class="btns" id="D">
+							D
+						</div>
+						<div class="btns" id="F">
+							F
+						</div>
+						<div class="btns" id="G">
+							G
+						</div>
+						<div class="btns" id="H">
+							H
+						</div>
+						<div class="btns" id="J">
+							J
+						</div>
+						<div class="btns" id="K">
+							K
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	<audio id="music">
+		<source src="" type="audio/wav">
+	</audio>
+	<audio id="music2">
+		<source src="" type="audio/wav">
+	</audio>
+
+	</div>
+	<script>
+	function myFunction2() {
+	  var x = document.getElementById("btn1");
+	  var myMusic= document.getElementById("music");
+	  var myMusic2 = document.getElementById("music2");
+	  x.innerHTML = "Enjoy Playing!!";
+	  document.onkeydown = checkKeycode
+	  function checkKeycode(e) {
+		var keycode;
+		if (window.event){
+			keycode = window.event.keyCode;
+			var temp = String.fromCharCode(keycode);
+		}
+		else if (e)	{
+			keycode = e.which;
+		}
+		if (keycode>=49 && keycode<=57) {
+			myMusic2.setAttribute("src","./music-files/"+keycode+".wav");
+			myMusic2.play();
+		} else if(keycode==16 || keycode == 48){
+			myMusic.pause();
+			myMusic2.pause();
+		}
+		else {
+		    myMusic.setAttribute("src","./music-files/"+keycode+".wav");
+			myMusic.play();
+		}
+	  }
+	}
+
+	</script>
+
+</body>
+</html>
