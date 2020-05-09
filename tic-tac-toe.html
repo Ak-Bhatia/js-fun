@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Merienda+One&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Warnes|Yeseva+One&display=swap" rel="stylesheet">
+
+    <title>Tic-Tac-Toe</title>
+
+    <style type="text/css">
+    	
+	.head-text
+	{
+		margin: 0px;
+		font-size: 25px;
+		font-weight: bold;
+		font-family: cursive;
+		margin-bottom: 0px;
+		animation: bgChange 2s alternate infinite;
+	}
+
+	.foot-text
+	{
+		margin-bottom: 0px;
+		padding: 10px;
+		color:white;
+		animation: bgChange 2s alternate infinite;
+	}
+
+	@keyframes bgChange{
+		from{background: #35428A;}
+		to{background: #171D3E;}	
+	}
+
+   	.board
+   	{
+   		margin: 20px auto;
+   		width: 40%;
+   		height: 75vh;
+   		font-size: 110px;
+   		z-index: 1;
+   	}
+
+	@media screen and (max-width: 500px) {
+	  .board {
+	  	width: 95%;
+	  }
+	}
+
+    .board-row
+    {
+    	border-bottom: 2px solid grey;
+    }
+
+   	.board-box
+   	{
+
+	    cursor:grabbing;
+   		border-right: 2px solid grey;
+   		padding: 0px;
+   		margin: 0px;
+   		height: 25vh;
+   	}
+
+   	.board-edge
+   	{
+
+	    cursor:grabbing;
+   		padding: 0px;
+   		margin: 0px;
+   		height: 25vh;
+   	}
+
+   	#h-link
+   	{
+   		color:white;
+   	}
+
+    </style>
+
+  </head>
+  <body style="margin: 0px auto;" class="bg-light">
+	<div style="height:100vh; width:100%;" class="align-items-center text-center">
+		<h2 class="py-2 text-white head-text">Welcome to Tic-Tac-Toe <hr style="margin: 5px;">Turn of '<span id="turn">O</span>'</h2>
+		<p id="count" style="display: none;">0</p>
+		<button id="btn1"class="btn" onclick="window.location.reload();" style="color: white; top:30%; background: #5c6bc0; margin:10% auto; display: none;">
+			Play Again?
+		</button>
+		<div class="container-fluid text-center">
+			<div class="board align-items-center" id="board1">
+				<div class="row board-row justify-content-center">
+					<div class="col-4 board-box" onclick="addTurn('a',this)" id="a"></div>
+					<div class="col-4 board-box" onclick="addTurn('b',this)" id="b"></div>
+					<div class="col-4 board-edge" onclick="addTurn('c',this)" id="c"></div>
+				</div>
+				<div class="row board-row justify-content-center">
+					<div class="col-4 board-box" onclick="addTurn(4,this)" id="d"></div>
+					<div class="col-4 board-box" onclick="addTurn(5,this)" id="e"></div>
+					<div class="col-4 board-edge" onclick="addTurn(6,this)" id="f"></div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-4 board-box" onclick="addTurn(7,this)" id="g"></div>
+					<div class="col-4 board-box" onclick="addTurn(8,this)" id="h"></div>
+					<div class="col-4 board-edge" onclick="addTurn(9,this)" id="i"></div>
+				</div>
+			</div>
+		</div>
+		<p class="text-center align-items-center foot-text">Made By Ak-Bhatia<span><a id="h-link" href="./piano.html" target="_blank" style="text-decoration: none; color:white; margin: 25px;"><i>To Play Free Piano: Click Here</i></a></span></p>
+	</div>
+
+	<script type="text/javascript">
+		var addTurn = function(keycode,object){
+			var board = document.getElementById("board1");
+			var turn = document.getElementById("turn");
+			var count = document.getElementById("count");
+			var x = document.getElementById("btn1");
+			if(object.innerHTML === ""){
+				object.innerHTML = turn.innerHTML;
+				if(turn.innerHTML == "O"){
+					turn.innerHTML = "X";
+				} else {
+					turn.innerHTML = "O";
+				}
+
+				var flag = false;
+
+				var temp = parseInt(count.innerHTML);
+				temp = temp+1;
+				count.innerHTML = temp;
+
+				var a = document.getElementById("a").innerHTML;
+				var b = document.getElementById("b").innerHTML;
+				var c = document.getElementById("c").innerHTML;
+				var d = document.getElementById("d").innerHTML;
+				var e = document.getElementById("e").innerHTML;
+				var f = document.getElementById("f").innerHTML;
+				var g = document.getElementById("g").innerHTML;
+				var h = document.getElementById("h").innerHTML;
+				var i = document.getElementById("i").innerHTML;
+				
+				if(a!=="" &&((a===b && b==c) || (a===d && d==g) || (a===e && e==i))){
+					alert("Winner "+"is "+a);
+					flag = true;
+				}
+
+				if(b!=="" &&(b===e && b==h)){
+					alert("Winner "+"is "+b);
+					flag = true;
+				}
+
+				if(c!=="" && ((c===f && f==i) || (c===e && e==g))){
+					alert("Winner "+"is "+c);
+					flag = true;
+				}
+
+				if(d!=="" &&(d===e && e==f)){
+					alert("Winner "+"is "+d);
+					flag = true;
+				}
+				if(flag == false){
+					if(count.innerHTML==9){
+						alert("Game Tie");
+						x.style.display="block";
+					}
+				} else{
+					x.style.display="block";
+					board.style.opacity = "0.4";
+				}
+			}
+			else{
+				alert("move prohibited");
+			}
+		}
+	</script>
+
+</body>
+</html>

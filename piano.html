@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Merienda+One&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Warnes|Yeseva+One&display=swap" rel="stylesheet">
+
+    <title>Piano</title>
+
+    <style type="text/css">
+    	
+    	.head-text
+    	{
+    		font-family: 'Warnes', cursive;
+    		animation: bgChange 2s alternate infinite;
+    	}
+
+		.foot-text
+    	{
+    		margin-bottom: 0px;
+    		padding: 10px;
+    		color:white;
+    		animation: bgChange 2s alternate infinite;
+    	}
+
+    	@keyframes bgChange{
+    		from{background: #35428A;}
+    		to{background: #171D3E;}	
+    	}
+
+
+    	.btns-text
+    	{
+    		font-weight: 550;
+    		color: #000;
+    		font-size: 20px;
+    	}
+
+    	.btns
+    	{
+    		cursor: grabbing;
+    		background: white;
+    		padding: 10px 20px;
+    		font-size: 28px;
+    		border-radius: 5px;
+    		margin: 29px 20px;
+    		animation: colorChange 2s alternate infinite;
+		}
+
+	@keyframes colorChange
+	{
+	  from{box-shadow: -1px 1px 5px red;background: #f9f9f9;}
+	  to{box-shadow: 1px 1px 5px blue; background: white;}
+	}
+	
+	@media screen and (max-width: 500px) {
+	  .btn-row {
+	  	margin-left: 5vw;
+	  }
+	}
+
+    </style>
+
+  </head>
+  <body style="margin: 0px auto;" class="bg-light">
+	<div style="height:100vh; width:100%;" onclick="myFunction2()" class="align-middle text-center">
+		<h2 id="btn1" class="align-middle py-3 text-white head-text">Click Anywhere to Start piano !!</h2>
+		<p class="container">Either Press These keys from Your Keyboard or Click these Buttons below to play your Piano:</p>
+		<hr>
+
+		<div class="container-fluid text-center">
+			<div class="row align-items-center">
+				<div class="col-md-3 btns-text">
+					Inbuilt Tunes
+				</div>
+				<div class="col-md-9">
+					<div class="row btn-row">
+						<div class="btns" onclick="test(49,this)">
+							1
+						</div>
+						<div class="btns" onclick="test(50,this)">
+							2
+						</div>
+						<div class="btns" onclick="test(51,this)">
+							3
+						</div>
+						<div class="btns" onclick="test(52,this)">
+							4
+						</div>
+						<div class="btns" onclick="test(53,this)">
+							5
+						</div>
+						<div class="btns" onclick="test(54,this)">
+							6
+						</div>
+						<div class="btns" onclick="test(55,this)">
+							7
+						</div>
+						<div class="btns" onclick="test(56,this)">
+							8
+						</div>
+						<div class="btns" onclick="test(57,this)">
+							9
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row align-items-center">
+				<div class="col-md-3 btns-text">
+					To Stop Music
+				</div>
+				<div class="col-md-9">
+					<div class="row btn-row">
+						<div class="btns" onclick="test(16,this)">
+							Shift Key
+						</div>
+						<div class="btns" onclick="test(48,this)">
+							0
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row align-items-center">
+				<div class="col-md-3 btns-text">
+					Drum
+				</div>
+				<div class="col-md-9">
+					<div class="row btn-row">
+						<div class="btns" onclick="test(17,this)">
+							Control Bar
+						</div>
+						<div class="btns" onclick="test(32,this)">
+							Space Bar
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row align-items-center">
+				<div class="col-md-3 btns-text">
+					Piano Notes
+				</div>
+				<div class="col-md-9">
+					<div class="row btn-row">
+						<div class="btns" onclick="test(65,this)">
+							A
+						</div>
+						<div class="btns" onclick="test(83,this)">
+							S
+						</div>
+						<div class="btns" onclick="test(68,this)">
+							D
+						</div>
+						<div class="btns" onclick="test(70,this)">
+							F
+						</div>
+						<div class="btns" onclick="test(71,this)">
+							G
+						</div>
+						<div class="btns" onclick="test(72,this)">
+							H
+						</div>
+						<div class="btns" onclick="test(74,this)">
+							J
+						</div>
+						<div class="btns" onclick="test(75,this)">
+							K
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<audio id="music">
+			<source src="" type="audio/wav">
+		</audio>
+		<audio id="music2">
+			<source src="" type="audio/wav">
+		</audio>
+
+	<p class="text-center foot-text">Made By Ak-Bhatia<span><a id="h-link" href="./tic-tac-toe.html" target="_blank" style="text-decoration: none; color:white; margin: 25px;"><i>To Play Free Tic-Tac-Toe: Click Here</i></a></span></p>
+	</div>
+
+	<script>
+		var test = function(keycode,object){  
+		var myMusic= document.getElementById("music");
+	  	var myMusic2 = document.getElementById("music2");
+		if (keycode>=49 && keycode<=57) {
+			myMusic2.setAttribute("src","./music-files/"+keycode+".wav");
+			myMusic2.play();
+		} else if(keycode==16 || keycode == 48){
+			myMusic.pause();
+			myMusic2.pause();
+		}
+		else {
+		    myMusic.setAttribute("src","./music-files/"+keycode+".wav");
+			myMusic.play();
+		}
+	  }
+	</script>
+
+	<script>
+	function myFunction2() {
+	  var x = document.getElementById("btn1");
+	  var myMusic= document.getElementById("music");
+	  var myMusic2 = document.getElementById("music2");
+	  x.innerHTML = "Enjoy playing piano !!";
+	  document.onkeydown = checkKeycode
+	  function checkKeycode(e) {
+		var keycode;
+		if (window.event){
+			keycode = window.event.keyCode;
+			var temp = String.fromCharCode(keycode);
+		}
+		else if (e)	{
+			keycode = e.which;
+		}
+		if (keycode>=49 && keycode<=57) {
+			myMusic2.setAttribute("src","./music-files/"+keycode+".wav");
+			myMusic2.play();
+		} else if(keycode==16 || keycode == 48){
+			myMusic.pause();
+			myMusic2.pause();
+		}
+		else {
+		    myMusic.setAttribute("src","./music-files/"+keycode+".wav");
+			myMusic.play();
+		}
+	  }
+	}
+
+	</script>
+
+</body>
+</html>
