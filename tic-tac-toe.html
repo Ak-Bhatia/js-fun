@@ -113,10 +113,16 @@
 			</div>
 		</div>
 		<p class="text-center align-items-center foot-text">Made By Ak-Bhatia<span><a id="h-link" href="./piano.html" target="_blank" style="text-decoration: none; color:white; margin: 25px;"><i>To Play Free Piano: Click Here</i></a></span></p>
+		<audio id="music" loop>
+			<source src="./music-files/51.wav" type="audio/wav">
+		</audio>
 	</div>
 
 	<script type="text/javascript">
 		var addTurn = function(keycode,object){
+			var music = document.getElementById("music");
+			music.play();
+			var winner;
 			var board = document.getElementById("board1");
 			var turn = document.getElementById("turn");
 			var count = document.getElementById("count");
@@ -146,30 +152,38 @@
 				var i = document.getElementById("i").innerHTML;
 				
 				if(a!=="" &&((a===b && b==c) || (a===d && d==g) || (a===e && e==i))){
-					alert("Winner "+"is "+a);
+					winner = a;
 					flag = true;
 				}
 
 				if(b!=="" &&(b===e && b==h)){
-					alert("Winner "+"is "+b);
+					winner = b;
 					flag = true;
 				}
 
 				if(c!=="" && ((c===f && f==i) || (c===e && e==g))){
-					alert("Winner "+"is "+c);
+					winner = c;
 					flag = true;
 				}
 
 				if(d!=="" &&(d===e && e==f)){
-					alert("Winner "+"is "+d);
+					winner = d;
 					flag = true;
 				}
 				if(flag == false){
 					if(count.innerHTML==9){
+						music.setAttribute("src","./music-files/32.wav");
+						music.loop = false;
+						music.play();
 						alert("Game Tie");
 						x.style.display="block";
+						board.style.opacity = "0.4";
 					}
 				} else{
+					music.setAttribute("src","./music-files/32.wav");
+					music.loop = false;
+					music.play();
+					alert("Winner "+"is "+winner);
 					x.style.display="block";
 					board.style.opacity = "0.4";
 				}
